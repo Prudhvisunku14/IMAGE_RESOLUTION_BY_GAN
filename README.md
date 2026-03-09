@@ -84,3 +84,128 @@ The comparison below shows the transformation from **Low Resolution (22×22)** t
 
 
 
+
+# 📁 Repository Structure
+
+```
+IMAGE_RESOLUTION_BY_GAN
+│
+├── SRGAN_CNN_TRAIN_CODE.ipynb
+├── SRGAN_SRCNN_TEST_CODE.ipynb
+├── Pre_trained_model.ipynb
+│
+├── cnn_final.pth
+├── netG_final.pth
+│
+├── plot_cnn.jpeg
+├── plot_sr.jpeg
+│
+└── README.md
+```
+
+---
+
+# 📂 Dataset
+
+The dataset used to train the model is available on Google Drive.
+
+🔗 Download Dataset:
+https://drive.google.com/drive/folders/1K55R520-UMVgRQUR5ew6TE8Tfiz06XUw?usp=drive_link
+
+After downloading, place the dataset inside the project folder before running the training notebooks.
+
+---
+
+# 🚀 How to Run the Project on Your PC / Laptop
+
+## 1️⃣ Clone the Repository
+
+Open **Terminal / Command Prompt** and run:
+
+```
+git clone https://github.com/Prudhvisunku14/IMAGE_RESOLUTION_BY_GAN.git
+cd IMAGE_RESOLUTION_BY_GAN
+```
+
+---
+
+## 2️⃣ Install Required Libraries
+
+Make sure **Python 3.8 or higher** is installed.
+
+Install dependencies:
+
+```
+pip install torch torchvision matplotlib pillow ipywidgets notebook
+```
+
+---
+
+## 3️⃣ Start Jupyter Notebook
+
+Run the following command:
+
+```
+jupyter notebook
+```
+
+A browser window will open automatically.
+
+---
+
+## 4️⃣ Open the Pretrained Model Notebook
+
+Open:
+
+```
+Pre_trained_model.ipynb
+```
+
+---
+
+## 5️⃣ Run the Notebook
+
+▶ Run all cells in the notebook.
+
+📤 An **Upload Image button** will appear.
+
+Upload a **low-resolution image**, and the model will generate a **high-resolution output image**.
+
+---
+
+# 📊 Output
+
+The generated super-resolution image will:
+
+✔ Appear in the notebook
+✔ Be saved in the **results** folder
+
+Example output:
+
+Low Resolution ➜ Super Resolution
+
+---
+
+# 💻 Hardware Requirements
+
+Minimum requirements:
+
+🔹 Python 3.8+
+🔹 4 GB RAM
+🔹 CPU (GPU optional)
+
+If a GPU is available, the model will automatically use it.
+
+---
+
+
+
+---
+
+# 👨‍💻 Author
+
+**Prudhvi Sunku**
+
+
+
+
