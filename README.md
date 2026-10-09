@@ -256,20 +256,88 @@ Follow the notebook's image-upload interface to provide an input image and gener
 
 Actual training requirements depend on dataset size, batch size, model configuration, and available hardware.
 
-## 11. Future Improvements
+## 7. Quantitative Evaluation Metrics
 
-- Evaluate models on a larger and more diverse test dataset.
-- Compare PSNR, SSIM, and perceptual metrics.
-- Experiment with different reconstruction and perceptual loss functions.
-- Add inference-time benchmarking.
-- Test performance on real-world low-resolution images.
-- Develop a web interface for uploading images and viewing model comparisons.
+To evaluate the quality of the generated high-resolution images, two widely used image reconstruction metrics are considered: **Peak Signal-to-Noise Ratio (PSNR)** and **Structural Similarity Index Measure (SSIM)**.
 
-## 12. References
+Both metrics compare a super-resolved image against its corresponding ground-truth high-resolution image.
 
-- [SRCNN — Image Super-Resolution Using Deep Convolutional Networks](https://arxiv.org/abs/1501.00092)
-- [SRGAN — Photo-Realistic Single Image Super-Resolution Using a Generative Adversarial Network](https://arxiv.org/abs/1609.04802)
-- [PyTorch Documentation](https://pytorch.org/docs/stable/index.html)
+### 7.1 Peak Signal-to-Noise Ratio (PSNR)
+
+PSNR measures the pixel-level reconstruction quality of a generated image relative to the ground-truth image. It is derived from the Mean Squared Error (MSE).
+
+**Formula:**
+
+\[
+\mathrm{PSNR}=10\log_{10}\left(\frac{MAX_I^2}{MSE}\right)
+\]
+
+Where:
+
+- \(MAX_I\) is the maximum possible pixel intensity value (255 for an 8-bit image).
+- \(MSE\) is the Mean Squared Error between the generated image and the reference image.
+
+The MSE is calculated as:
+
+\[
+\mathrm{MSE}=\frac{1}{N}\sum_{i=1}^{N}(I_i-\hat I_i)^2
+\]
+
+Where:
+
+- \(N\) is the total number of pixels across the evaluated image channels.
+- \(I_i\) is the ground-truth pixel value.
+- \(\hat I_i\) is the corresponding predicted pixel value.
+
+**Interpretation:**
+- Higher PSNR indicates lower pixel-level reconstruction error.
+- PSNR is measured in decibels (dB) and has no fixed maximum.
+- A perfect reconstruction has zero MSE and theoretically infinite PSNR.
+
+### 7.2 Structural Similarity Index Measure (SSIM)
+
+SSIM measures the structural similarity between the generated image and the reference image by comparing luminance, contrast, and structural information.
+
+**Formula:**
+
+\[
+\mathrm{SSIM}(x,y)=
+\frac{(2\mu_x\mu_y+C_1)(2\sigma_{xy}+C_2)}
+{(\mu_x^2+\mu_y^2+C_1)(\sigma_x^2+\sigma_y^2+C_2)}
+\]
+
+Where:
+
+- \(x,y\) represent local image regions from the reference and generated images.
+- \(\mu_x,\mu_y\) are their mean intensities.
+- \(\sigma_x^2,\sigma_y^2\) are their variances.
+- \(\sigma_{xy}\) is their covariance.
+- \(C_1,C_2\) are small constants used for numerical stability.
+
+**Interpretation:**
+- SSIM is generally reported on a scale from 0 to 1 for typical nonnegative image comparisons.
+- A value closer to 1 indicates greater structural similarity.
+- SSIM complements PSNR because it considers structural information rather than only pixel-level errors.
+
+### 7.3 SRCNN vs. SRGAN: Metric Comparison
+
+The following values are **illustrative estimates only**, provided to explain the expected trade-off between reconstruction accuracy and perceptual quality. They have not been experimentally measured for this project.
+
+| Metric | SRCNN (CNN) | SRGAN |
+|---|---:|---:|
+| PSNR | ~28 dB | ~25 dB |
+| SSIM | ~0.85 | ~0.78 |
+| Reconstruction characteristics | Smoother, pixel-oriented | Sharper, potentially richer textures |
+
+### 7.4 Results Interpretation
+
+SRCNN typically emphasizes pixel-level reconstruction through a reconstruction loss, such as MSE. This can help it achieve higher PSNR and SSIM when evaluated against ground-truth images.
+
+SRGAN uses adversarial training to encourage perceptually realistic image details. Some generated textures may differ from the reference image, potentially reducing PSNR and SSIM even when the result appears visually sharper.
+
+Therefore, PSNR and SSIM should be considered alongside visual inspection. Neither metric alone fully captures human perception of image quality.
+
+**Evaluation note:** A valid quantitative comparison requires corresponding ground-truth high-resolution images, consistent image ranges and color spaces, and the same test set for both models. Replace the illustrative values above with measured results before reporting them as experimental findings.
 
 ## Author
 
