@@ -151,6 +151,22 @@ Compare the following:
 
 For quantitative evaluation, PSNR and SSIM can measure reconstruction fidelity, while perceptual metrics can help assess visual similarity. Report metric values only after evaluating the trained models on a consistent test set.
 
+### 6.1 Real-World Example: College Image Super-Resolution
+
+The following example demonstrates the application of the trained super-resolution model to a low-resolution image of our college.
+
+![College Image Super-Resolution Result](SAMPLE.png)
+
+**Objective:** Enhance a low-resolution college image to improve its visual clarity and reveal finer details.
+
+**What this demonstrates:**
+- Application of the trained model to a real-world image.
+- 4× image upscaling to generate a higher-resolution output.
+- Visual enhancement of edges, structures, and image details.
+- Practical use of deep learning for image enhancement.
+
+This example illustrates how the super-resolution pipeline can be applied beyond the training dataset. The generated image may appear sharper, but the reconstructed details are model predictions and are not guaranteed to match the original scene perfectly.
+
 ## 7. Repository Structure
 
 ```text
