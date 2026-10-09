@@ -78,7 +78,7 @@ This project uses separate pipelines for CNN-based reconstruction and GAN-based 
 
 ### 4.1 CNN Pipeline (`CNN_PIPE`)
 
-![CNN Pipeline](CNN_PIPE.png)
+![CNN Pipeline](CNN_FINAL.png)
 
 The CNN pipeline illustrates the image reconstruction process using a convolutional neural network.
 
